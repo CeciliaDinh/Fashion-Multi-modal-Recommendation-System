@@ -1,0 +1,65 @@
+# ==========================================
+# 1. DATASET CONFIGURATION
+# ==========================================
+dataset: mydata
+data_path: ./dataset/
+
+# [CRITICAL] You must load the 'item' file to get price_bucket
+load_col: 
+  inter: [user_id, item_id, rating, timestamp]
+
+# Tell RecBole to use the pre-split files:
+# It will look for: mydata.train.inter, mydata.valid.inter, mydata.test.inter
+split_type: by_file
+benchmark_filename: ['train', 'valid', 'test']
+
+field_separator: "\t"
+USER_ID_FIELD: user_id
+ITEM_ID_FIELD: item_id
+RATING_FIELD: rating
+TIME_FIELD: timestamp
+
+# [IMPORTANT] Since your script did not save negative samples:
+# RecBole will generate 1 negative item per positive item during training
+train_neg_sample_args:
+  distribution: uniform
+  sample_num: 5
+  alpha: 1.0
+  dynamic: False
+  candidate_num: 0
+
+# ==========================================
+# 2. MODEL CONFIGURATION (LightGCN)
+# ==========================================
+model: LightGCN
+n_layers: 2
+reg_weight: 1e-2
+require_pow: False
+keep_prob: 0.7
+
+# Note: Standard LightGCN uses ID embeddings only. 
+# It will LOAD price_bucket, but it won't USE it for training unless you modify the model code.
+
+# ==========================================
+# 3. TRAINING & EVALUATION
+# ==========================================
+epochs: 50
+learning_rate: 0.0005
+train_batch_size: 2048
+learner: adam
+seed: 2025
+gpu_id: 0
+embedding_size: 16
+
+# Evaluation settings
+eval_args:
+  split: {'by': 'file'} # This is ignored because split_type is 'by_file', but good to keep structure
+  group_by: user
+  order: RO # Random Order (matches your preprocessing logic)
+  mode: full # Evaluate on all items (minus training items)
+
+eval_step: 1
+stopping_step: 20
+metrics: ["Recall", "NDCG"]
+topk: [10, 20]
+valid_metric: Recall@10

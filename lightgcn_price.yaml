@@ -1,0 +1,63 @@
+# ================== Dataset ==================
+dataset: mydata
+dataset_path: ./dataset/
+field_separator: "\t"
+USER_ID_FIELD: user_id
+ITEM_ID_FIELD: item_id
+RATING_FIELD: rating
+TIME_FIELD: timestamp
+
+load_col:
+  inter: [user_id, item_id, rating, timestamp]
+  item: [item_id, price_bucket]
+
+split_type: by_file
+benchmark_filename: ['train', 'valid', 'test']   # thêm dòng này để ép RecBole đọc 3 file
+
+train_neg_sample_args:
+  distribution: uniform
+  sample_num: 1
+  alpha: 1.0
+  dynamic: False
+  candidate_num: 
+
+eval_args:
+  split: {'by': 'file'}
+  mode: full 
+  group_by: user
+
+# ================== Model ==================
+model: Lightgcn_price
+embedding_size: 16
+n_layers: 2
+reg_weight: 1e-2
+require_pow: False
+keep_prob: 0.7
+
+fusion_type: concat_mlp
+bucket_vocab_size: 11
+bucket_emb_size: 16
+mlp_hidden_sizes: [32,16]
+bucket_reg: True
+item_bucket_index_path: None
+
+# ================== Training ==================
+epochs: 50
+learning_rate: 0.0005
+train_batch_size: 2048
+eval_batch_size: 4096
+show_progress: True
+learner: adam
+
+# ================== Metrics ==================
+metrics: ['Recall', 'NDCG']
+topk: [10, 20]
+valid_metric: 'recall@10'
+valid_metric_bigger: True
+eval_step: 1
+stopping_step: 10
+
+# ================== Device ==================
+device: cuda
+gpu_id: 0
+seed: 2025
