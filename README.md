@@ -7,6 +7,10 @@
 - This project is conducted in a real-life highly sparse dataset with 99.8% sparsity, with more than 2M+ users from Amazon in 2023, and achieved 15% increase in NCDG@10, NCGD@20, Recall@10, Recall@20 compared with a baseline conducted by LightGCN. 
 
 #### Dataset Overview 
+- Here's the diagram visualises the dataset's structure, and the link to the dataset [View Dataset](https://amazon-reviews-2023.github.io/) 
+![Dataset Structure](images/data%20dictionary.png)
+
+
 ### III. Methodology 
 #### 1. Data Cleaning 
 #### 1.1. Data Preprocessing Checklist 
