@@ -1,0 +1,81 @@
+# =========================
+# Python cache
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# =========================
+# Virtual environments
+# =========================
+venv/
+env/
+ENV/
+recbole_clean_env/
+.venv/
+
+# =========================
+# Conda / Anaconda
+# =========================
+anaconda_projects/
+conda-meta/
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# Model / Checkpoints
+# =========================
+saved/
+checkpoint/
+checkpoints/
+
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.h5
+*.pkl
+*.pickle
+
+# =========================
+# Dataset / Large files
+# =========================
+data/
+dataset/
+data_sources/
+
+*.zip
+*.rar
+*.7z
+
+# =========================
+# Database
+# =========================
+*.db
+*.sqlite
+*.sqlite3
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Temporary files
+# =========================
+tmp/
+temp/
+*.tmp

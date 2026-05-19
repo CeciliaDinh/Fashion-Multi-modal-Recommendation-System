@@ -26,6 +26,3 @@
 ### V. Project's Structure And How To Run The Program By Yourself \
 #### 1. Project's Structure 
 #### 2. How To Run The Program 
-
-
-  give me the files with the following structures
