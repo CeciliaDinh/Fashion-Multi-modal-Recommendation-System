@@ -4,7 +4,7 @@
 ### I. Project Overview & Key Objectives: 
 - In today's world, Recommendation System (RS) has become an essential part of any business to help business owners achieve their goals by ehancing user experience through personalized product recommendations. Despite its proven effectiveness, Recommendation Systems, especially Collaborative Filtering ones, are still struggling to recommend for sparse datasets, with Cold-start issue (Users who only make a few purchases, or less popular products). 
 - This project aims to resolve the Cold-start issue by building a Multi-model Recommendation System, based on not only the user-item interactions, but also items' metadata. The project leverages from visual signal such as product image, to textual signal such as customer's reviews, product titles, to customer's spending signals such as price buckets. 
-- This project is conducted in a real-life highly sparse dataset with 99.8% sparsity, with more than 2M+ users from Amazon in 2023, and achieved 15% increase in NCDG@10, NCGD@20, Recall@10, Recall@20 compared with a baseline conducted by LightGCN. 
+- This project is conducted in a real-life highly sparse dataset with 99.8% sparsity, with more than 2M+ users (2.6M rows of datta) from Amazon in 2023, and achieved 15% increase in NCDG@10, NCGD@20, Recall@10, Recall@20 compared with a baseline conducted by LightGCN. 
 
 #### Dataset Overview 
 - Here's the diagram visualises the dataset's structure, and the link to the dataset [View Dataset](https://amazon-reviews-2023.github.io/) 
